@@ -1,0 +1,1 @@
+run npm install in terminal, used windows 11
