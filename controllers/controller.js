@@ -33,7 +33,7 @@ console.log(newUser)
      return res.status(201).json({
         error: false,
         newUser,
-        message: "New User Created",
+        message: "successfully signed up",
       });
    
   } catch (err) {
@@ -121,12 +121,12 @@ export const getAllTask = async (req, res) => {
     return res.status(200).json({
       error: false,
       tasks,
-      message: "All Tasks Retrieved",
+      message: "task fetched",
     });
   } catch (error) {
     return res.status(500).json({
       error: true,
-      message: "Internal Server Error",
+      message: "server error",
     });
   }
 };
@@ -161,7 +161,7 @@ export const addTask = async (req, res) => {
     console.log(error);
     return res.status(500).json({
       error: true,
-      message: "Internal Server Error",
+      message: "server error",
     });
   }
 };
@@ -192,13 +192,13 @@ console.log(req.body)
     return res.status(200).json({
       error: false,
       task,
-      message: "Task Updated Successfully",
+      message: "task updated",
     });
   } catch (err) {
     console.log(err);
     return res.status(500).json({
       error: true,
-      message: "Internal Server Error",
+      message: "server error",
     });
   }
 };
@@ -211,19 +211,19 @@ export const deleteTask = async (req, res) => {
     const task = await taskModel.findOne({ _id: deleteId, userId: user._id });
 
     if (!task) {
-      return res.status(404).json({ message: "Task Not Found" });
+      return res.status(404).json({ message: "task not found" });
     }
 
     await taskModel.deleteOne({ _id: deleteId, userId: user._id });
 
     return res.status(200).json({
       error : false,
-      message : "Task Has Been Deleted Successfully"
+      message : "task has been deleted"
     })
   } catch (error) {
     return res.status(500).json({
       error: true,
-      message : "Internal Server Error"
+      message : "server error"
     })
   }
 };
